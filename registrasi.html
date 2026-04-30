@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrasi - Bontang aquatik</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="icon">📝</div>
+          <h1>Daftar Sekarang</h1>
+          <p>Bergabunglah dengan kelas pelatihan renang kami</p>
+        </div>
+        <div class="auth-body">
+          <form id="form-registrasi">
+            <div class="form-group">
+              <label for="nama_lengkap">Nama Lengkap *</label>
+              <input type="text" id="nama_lengkap" name="nama_lengkap" class="form-control" required placeholder="Contoh: Budi Santoso">
+            </div>
+            <div class="form-group">
+              <label for="username">Username *</label>
+              <input type="text" id="username" name="username" class="form-control" required placeholder="Minimal 4 karakter" minlength="4" pattern="[a-zA-Z0-9_]+">
+              <p class="form-helper">Hanya huruf, angka, dan underscore. Tidak bisa diubah.</p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password *</label>
+              <div class="password-wrap">
+                <input type="password" id="password" name="password" class="form-control" required minlength="6" placeholder="Minimal 6 karakter">
+                <button type="button" class="password-toggle" id="toggle-password" aria-label="Toggle password">👁️</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nomor_whatsapp">Nomor WhatsApp *</label>
+              <input type="tel" id="nomor_whatsapp" name="nomor_whatsapp" class="form-control" required placeholder="Contoh: 081234567890">
+              <p class="form-helper">Admin akan menghubungi Anda untuk konfirmasi kelas dan pembayaran.</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-2">Daftar Sekarang</button>
+          </form>
+        </div>
+        <div class="auth-footer">
+          Sudah punya akun? <a href="login.html">Masuk di sini</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/registrasi.js"></script>
+</body>
+</html>

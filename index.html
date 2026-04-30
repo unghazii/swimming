@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bontang aquatik - Kelas Pelatihan Renang Profesional</title>
+  <meta name="description" content="Bergabunglah dengan kelas pelatihan renang terbaik dengan sistem terstruktur dan fleksibel.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>Belajar Berenang <span>Bersama Pelatih Profesional</span></h1>
+        <p>Tingkatkan kemampuan renangmu dengan kelas pelatihan terstruktur dan jadwal fleksibel.</p>
+        <div class="hero-buttons">
+          <a href="registrasi.html" class="btn btn-primary">Daftar Sekarang →</a>
+          <a href="#tentang" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Ganti placeholder dengan foto kegiatan asli, taruh di assets/images/hero.jpg -->
+        <!-- <img src="assets/images/hero.jpg" alt="Kelas Renang"> -->
+        <div class="hero-image-placeholder">🏊‍♂️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG / PROFIL -->
+  <section class="section" id="tentang">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Tentang Kami</span>
+        <h2>Kelas Pelatihan Renang Berkualitas</h2>
+        <p>Kami menyediakan kelas pelatihan renang dengan kurikulum terstruktur untuk semua level, didukung pelatih profesional dan fasilitas terbaik.</p>
+      </div>
+      <div class="profile-grid">
+        <div class="card profile-card">
+          <div class="icon">🎯</div>
+          <h3>Pelatih Profesional</h3>
+          <p>Pelatih dengan pengalaman lebih dari 10 tahun di bidang renang kompetitif dan rekreasional.</p>
+        </div>
+        <div class="card profile-card">
+          <div class="icon">📅</div>
+          <h3>Jadwal Fleksibel</h3>
+          <p>Pilih kelas yang sesuai dengan jadwal Anda. Jadwal pelatihan diumumkan secara online dan transparan.</p>
+        </div>
+        <div class="card profile-card">
+          <div class="icon">📊</div>
+          <h3>Tracking Kehadiran</h3>
+          <p>Monitor progres kehadiran Anda secara real-time melalui dashboard pribadi yang mudah diakses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section section-alt" id="galeri">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Galeri</span>
+        <h2>Momen Kegiatan Kelas</h2>
+        <p>Lihat keseruan kegiatan latihan dan momen-momen tak terlupakan dari para peserta kami.</p>
+      </div>
+      <div class="gallery-grid">
+        <!-- Ganti div dengan <img src="assets/images/gallery/foto1.jpg"> -->
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container">
+    <div class="cta-section">
+      <h2>Siap Memulai Pelatihan Renang Anda?</h2>
+      <p>Daftarkan diri Anda sekarang dan rasakan pengalaman belajar renang yang menyenangkan dan terstruktur.</p>
+      <a href="registrasi.html" class="btn btn-primary">Mulai Daftar Sekarang →</a>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section class="section section-alt" id="kontak">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Hubungi Kami</span>
+        <h2>Punya Pertanyaan?</h2>
+        <p>Tim kami siap membantu Anda. Hubungi kami melalui kontak berikut.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">📱</div>
+          <h4>WhatsApp</h4>
+          <p>Respon cepat & ramah</p>
+          <a data-wa target="_blank" rel="noopener">Chat Sekarang →</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">✉️</div>
+          <h4>Email</h4>
+          <p>Untuk pertanyaan formal</p>
+          <a id="contact-email" href="#">Kirim Email →</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">📍</div>
+          <h4>Lokasi</h4>
+          <p id="contact-alamat">-</p>
+          <span class="text-muted">Kunjungi langsung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/home.js"></script>
+  <script>
+    // Update kontak dari config
+    document.getElementById('contact-email').href = 'mailto:' + CONFIG.CONTACT.email;
+    document.getElementById('contact-email').textContent = CONFIG.CONTACT.email + ' →';
+    document.getElementById('contact-alamat').textContent = CONFIG.CONTACT.alamat;
+  </script>
+</body>
+</html>

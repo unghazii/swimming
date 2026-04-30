@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Peserta - Bontang aquatik</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/peserta.css">
+</head>
+<body>
+
+  <div class="dashboard">
+    <div class="container">
+      <div class="dashboard-header">
+        <div>
+          <h1>Halo, <span id="user-nama">Peserta</span> 👋</h1>
+          <p>Selamat datang di dashboard pelatihan renang Anda</p>
+        </div>
+        <div class="kelas-badge">🏊 Kelas: <span id="user-kelas">-</span></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Jadwal</div>
+          <div class="stat-value" id="stat-total">0</div>
+          <div class="stat-sub">Dari kelas Anda</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">Total Hadir</div>
+          <div class="stat-value" id="stat-hadir">0</div>
+          <div class="stat-sub">Sesi yang sudah diikuti</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">Persentase Kehadiran</div>
+          <div class="stat-value" id="stat-persen">0%</div>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>📅 Jadwal Pelatihan Anda</h2>
+        <div id="jadwal-list">
+          <div class="empty-state">
+            <div class="icon">⏳</div>
+            <p>Memuat jadwal...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/peserta.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Bontang aquatik</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+  <div class="admin-dashboard">
+    <div class="container">
+      <div class="admin-header">
+        <div>
+          <h1>🛡️ Admin Panel</h1>
+          <p>Selamat datang, <span id="admin-username">Admin</span></p>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-refresh">🔄 Refresh Data</button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="icon-bg blue">👥</div>
+          <div>
+            <div class="stat-label">Total Peserta</div>
+            <div class="stat-value" id="stat-total-peserta">0</div>
+          </div>
+        </div>
+        <div class="admin-stat">
+          <div class="icon-bg green">✅</div>
+          <div>
+            <div class="stat-label">Peserta Aktif</div>
+            <div class="stat-value" id="stat-aktif-peserta">0</div>
+          </div>
+        </div>
+        <div class="admin-stat">
+          <div class="icon-bg orange">📅</div>
+          <div>
+            <div class="stat-label">Total Jadwal</div>
+            <div class="stat-value" id="stat-total-jadwal">0</div>
+          </div>
+        </div>
+        <div class="admin-stat">
+          <div class="icon-bg purple">📊</div>
+          <div>
+            <div class="stat-label">Total Kehadiran</div>
+            <div class="stat-value" id="stat-total-kehadiran">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="peserta">👥 Data Peserta</button>
+        <button class="tab-btn" data-tab="jadwal">📅 Jadwal Pelatihan</button>
+        <button class="tab-btn" data-tab="kehadiran">📊 Data Kehadiran</button>
+      </div>
+
+      <!-- TAB PESERTA -->
+      <div class="tab-content active" id="tab-peserta">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <input type="text" id="search-peserta" class="search-input" placeholder="🔍 Cari nama, username, atau kelas...">
+          </div>
+          <div class="text-muted" style="font-size:13px;">
+            Klik tombol ✏️ untuk konfirmasi pendaftaran (kelas, tanggal, pembayaran)
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nama Lengkap</th>
+                <th>Username</th>
+                <th>WhatsApp</th>
+                <th>Kelas</th>
+                <th>Tgl Mulai</th>
+                <th>Tgl Akhir</th>
+                <th>Pembayaran</th>
+                <th>Hadir</th>
+                <th>Persentase</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-peserta">
+              <tr><td colspan="11" style="text-align:center;padding:30px;">Memuat...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB JADWAL -->
+      <div class="tab-content" id="tab-jadwal">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <input type="text" id="search-jadwal" class="search-input" placeholder="🔍 Cari kelas, lokasi, status...">
+          </div>
+          <button class="btn btn-primary btn-sm" id="btn-add-jadwal">➕ Tambah Jadwal</button>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Pukul</th>
+                <th>Kelas</th>
+                <th>Lokasi</th>
+                <th>Status</th>
+                <th>ID Pelatih</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-jadwal">
+              <tr><td colspan="7" style="text-align:center;padding:30px;">Memuat...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB KEHADIRAN -->
+      <div class="tab-content" id="tab-kehadiran">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <select id="filter-periode" class="filter-select">
+              <option value="all">Semua Periode</option>
+              <option value="minggu">Minggu Ini</option>
+              <option value="bulan">Bulan Ini</option>
+              <option value="tahun">Tahun Ini</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Pukul</th>
+                <th>Nama Peserta</th>
+                <th>Kelas</th>
+                <th>Lokasi</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-kehadiran">
+              <tr><td colspan="7" style="text-align:center;padding:30px;">Memuat...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
