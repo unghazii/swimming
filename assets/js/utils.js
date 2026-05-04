@@ -1,12 +1,63 @@
 /**
- * Utility helpers - notifikasi, loader, format date, modal, dll.
+ * Utility helpers - notifikasi, loader, format date, modal, theme switcher.
  */
 
+/* =========================================================
+   THEME SWITCHER
+   - Default: light
+   - Tersimpan di localStorage agar persist antar sesi
+   - Diterapkan SECEPAT MUNGKIN (sebelum DOMContentLoaded) untuk mencegah FOUC
+   ========================================================= */
+const Theme = {
+  KEY: 'swim_theme',
+
+  get() {
+    return localStorage.getItem(this.KEY) || this.systemPreference();
+  },
+
+  systemPreference() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  },
+
+  apply(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(this.KEY, theme);
+    // Update icon tombol jika sudah ada
+    const btn = document.getElementById('theme-toggle-btn');
+    if (btn) btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+    // Update meta theme-color (warna address bar mobile)
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      document.head.appendChild(meta);
+    }
+    meta.content = theme === 'dark' ? '#0B0F12' : '#FFFFFF';
+  },
+
+  toggle() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    this.apply(next);
+  },
+
+  init() {
+    this.apply(this.get());
+  }
+};
+
+// Apply theme SEBELUM body di-render (mencegah flash putih saat dark mode)
+Theme.init();
+
+/* =========================================================
+   UTILS UMUM
+   ========================================================= */
 const Utils = {
   /**
    * Toast notification.
-   * @param {string} msg - Pesan
-   * @param {'info'|'success'|'error'|'warning'} type
    */
   notify(msg, type = 'info', duration = 3500) {
     let container = document.getElementById('notif-container');
@@ -41,7 +92,7 @@ const Utils = {
   formatDate(d) {
     if (!d) return '-';
     const date = (d instanceof Date) ? d : new Date(d);
-    if (isNaN(date.getTime())) return d; // bukan tanggal valid, return apa adanya
+    if (isNaN(date.getTime())) return d;
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'];
     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   },
@@ -61,9 +112,6 @@ const Utils = {
     return 'FALSE';
   },
 
-  /**
-   * Konfirmasi dengan custom modal (tidak pakai native confirm() yg jelek).
-   */
   confirm(message) {
     return new Promise(resolve => {
       const html = `
@@ -90,9 +138,6 @@ const Utils = {
     });
   },
 
-  /**
-   * Escape HTML untuk mencegah XSS sederhana.
-   */
   escapeHtml(str) {
     if (str === null || str === undefined) return '';
     return String(str)
@@ -104,10 +149,13 @@ const Utils = {
   },
 
   /**
-   * Mount navbar konsisten di semua halaman + handle responsif.
+   * Mount navbar konsisten + tombol theme toggle.
    */
   mountNavbar(activeRoute = '') {
     const session = Auth.getSession();
+    const currentTheme = Theme.get();
+    const themeIcon = currentTheme === 'dark' ? '☀️' : '🌙';
+
     let menuRight = '';
     if (session && session.role === 'peserta') {
       menuRight = `
@@ -138,6 +186,11 @@ const Utils = {
             <li><a href="index.html" class="${activeRoute === 'home' ? 'active' : ''}">Home</a></li>
             ${session && session.role === 'peserta' ? `<li><a href="peserta.html" class="${activeRoute === 'peserta' ? 'active' : ''}">Dashboard</a></li>` : ''}
             ${session && session.role === 'admin' ? `<li><a href="admin.html" class="${activeRoute === 'admin' ? 'active' : ''}">Admin Panel</a></li>` : ''}
+            <li>
+              <button id="theme-toggle-btn" class="theme-toggle"
+                      aria-label="Toggle tema"
+                      title="Ubah tema gelap/terang">${themeIcon}</button>
+            </li>
             <li>${menuRight}</li>
           </ul>
         </div>
@@ -148,11 +201,12 @@ const Utils = {
     document.getElementById('navbar-toggle').addEventListener('click', () => {
       document.getElementById('navbar-menu').classList.toggle('show');
     });
+
+    document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+      Theme.toggle();
+    });
   },
 
-  /**
-   * Mount footer.
-   */
   mountFooter() {
     const html = `
       <footer class="footer">
@@ -160,7 +214,7 @@ const Utils = {
           <div class="footer-grid">
             <div>
               <h4>${CONFIG.BRAND_NAME}</h4>
-              <p>Kelas pelatihan renang profesional dengan sistem tersetruktur dan fleksibel.</p>
+              <p>Kelas pelatihan renang profesional dengan sistem absensi online yang mudah dan transparan.</p>
             </div>
             <div>
               <h4>Navigasi</h4>

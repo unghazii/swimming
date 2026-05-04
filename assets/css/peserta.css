@@ -1,4 +1,4 @@
-/* ================== DASHBOARD PESERTA — Dark Aquatic ================== */
+/* ================== DASHBOARD PESERTA — Adaptive ================== */
 .dashboard {
   min-height: calc(100vh - 70px);
   background: var(--color-bg);
@@ -6,7 +6,7 @@
 }
 
 .dashboard-header {
-  background: linear-gradient(135deg, #0B0F12 0%, #0F7FA3 100%);
+  background: var(--gradient-header);
   color: #fff;
   padding: 32px 28px;
   border-radius: var(--radius-lg);
@@ -27,7 +27,7 @@
   right: -10%;
   width: 350px;
   height: 350px;
-  background: radial-gradient(circle, rgba(255, 106, 0, 0.18) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(255, 106, 0, 0.20) 0%, transparent 65%);
   pointer-events: none;
 }
 .dashboard-header > * { position: relative; z-index: 2; }
@@ -38,16 +38,17 @@
   letter-spacing: -0.3px;
 }
 .dashboard-header h1 span { color: var(--color-accent); }
-.dashboard-header p { color: rgba(255, 255, 255, 0.8); font-size: 14px; }
+.dashboard-header p { color: rgba(255, 255, 255, 0.85); font-size: 14px; }
 
 .dashboard-header .kelas-badge {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(22, 154, 196, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.30);
   padding: 10px 18px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
   backdrop-filter: blur(10px);
+  color: #fff;
 }
 .dashboard-header .kelas-badge span { color: var(--color-accent); }
 
@@ -133,7 +134,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-text-heading);
 }
 
 /* Jadwal cards */
@@ -167,7 +167,6 @@
 .jadwal-card h4 {
   font-size: 16px;
   margin-bottom: 12px;
-  color: var(--color-text-heading);
 }
 .jadwal-info {
   display: flex;
@@ -186,10 +185,9 @@
   gap: 10px;
 }
 
-/* CTA absen di card pakai accent orange */
 .jadwal-card .btn-primary {
   background: var(--color-accent);
-  box-shadow: 0 3px 10px rgba(255, 106, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(255, 106, 0, 0.30);
 }
 .jadwal-card .btn-primary:hover:not(:disabled) {
   background: var(--color-accent-hover);
