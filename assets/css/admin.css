@@ -1,14 +1,14 @@
-/* ================== DASHBOARD ADMIN ================== */
+/* ================== DASHBOARD ADMIN — Dark Premium ================== */
 .admin-dashboard {
   min-height: calc(100vh - 70px);
-  background: var(--color-bg-section);
+  background: var(--color-bg);
   padding: 30px 0 60px;
 }
 
 .admin-header {
-  background: linear-gradient(135deg, #0F2A44 0%, #1B3A5B 100%);
+  background: linear-gradient(135deg, #0B0F12 0%, #0F7FA3 100%);
   color: #fff;
-  padding: 26px;
+  padding: 28px;
   border-radius: var(--radius-lg);
   margin-bottom: 24px;
   display: flex;
@@ -16,19 +16,48 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
 }
+.admin-header::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 106, 0, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.admin-header > * { position: relative; z-index: 2; }
 .admin-header h1 {
   color: #fff;
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 4px;
+  letter-spacing: -0.3px;
 }
 .admin-header p { color: rgba(255, 255, 255, 0.8); font-size: 14px; }
+.admin-header p span { color: var(--color-accent); font-weight: 600; }
+
+/* Tombol refresh di header — outline dengan kontras putih */
+.admin-header .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+.admin-header .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  color: #fff;
+}
 
 /* Tabs */
 .tabs {
   display: flex;
   gap: 4px;
-  background: #fff;
+  background: var(--color-card);
   padding: 6px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
@@ -37,7 +66,7 @@
 }
 .tab-btn {
   flex: 1;
-  padding: 10px 18px;
+  padding: 11px 18px;
   border: none;
   background: transparent;
   color: var(--color-text-secondary);
@@ -49,10 +78,11 @@
   transition: var(--transition);
   white-space: nowrap;
 }
-.tab-btn:hover { background: var(--color-bg-section); }
+.tab-btn:hover { background: var(--color-bg-section); color: var(--color-text-heading); }
 .tab-btn.active {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(22, 154, 196, 0.35);
 }
 
 .tab-content { display: none; }
@@ -73,27 +103,38 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.search-input {
-  padding: 9px 14px;
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 13px;
-  min-width: 240px;
-}
-.search-input:focus {
-  outline: none;
-  border-color: var(--color-accent);
-}
-
+.search-input,
 .filter-select {
-  padding: 9px 14px;
+  padding: 10px 14px;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
   font-family: inherit;
   font-size: 13px;
-  background: #fff;
-  cursor: pointer;
+  background: var(--color-card);
+  color: var(--color-text-heading);
+  transition: var(--transition);
+}
+.search-input { min-width: 260px; }
+.search-input::placeholder { color: var(--color-text-secondary); }
+.search-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+.filter-select { cursor: pointer; }
+
+/* Tombol "Tambah Jadwal" pakai accent orange */
+#btn-add-jadwal {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+}
+#btn-add-jadwal:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #fff;
 }
 
 /* Action buttons in table */
@@ -102,10 +143,10 @@
   gap: 6px;
 }
 .icon-btn {
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -113,10 +154,24 @@
   font-size: 14px;
   transition: var(--transition);
 }
-.icon-btn.edit { background: #dbeafe; color: #1e40af; }
-.icon-btn.edit:hover { background: #bfdbfe; }
-.icon-btn.delete { background: #fee2e2; color: #991b1b; }
-.icon-btn.delete:hover { background: #fecaca; }
+.icon-btn.edit {
+  background: rgba(22, 154, 196, 0.15);
+  color: var(--color-primary);
+  border-color: rgba(22, 154, 196, 0.3);
+}
+.icon-btn.edit:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+.icon-btn.delete {
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.icon-btn.delete:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
 
 /* Persentase bar di tabel */
 .persen-cell {
@@ -128,18 +183,25 @@
 .persen-bar {
   flex: 1;
   height: 6px;
-  background: var(--color-border);
+  background: var(--color-bg-section);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
   overflow: hidden;
 }
 .persen-fill {
   height: 100%;
   border-radius: 999px;
+  transition: width 0.4s ease;
 }
-.persen-fill.high { background: var(--color-success); }
-.persen-fill.mid { background: var(--color-warning); }
-.persen-fill.low { background: var(--color-danger); }
-.persen-text { font-size: 12px; font-weight: 600; min-width: 36px; }
+.persen-fill.high { background: var(--color-success); box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+.persen-fill.mid { background: var(--color-accent); box-shadow: 0 0 8px rgba(255, 106, 0, 0.5); }
+.persen-fill.low { background: var(--color-danger); box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+.persen-text {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 40px;
+  color: var(--color-text-heading);
+}
 
 /* Stats untuk admin */
 .admin-stats {
@@ -149,29 +211,63 @@
   margin-bottom: 24px;
 }
 .admin-stat {
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 20px;
   display: flex;
   align-items: center;
   gap: 14px;
+  transition: var(--transition);
+}
+.admin-stat:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 .admin-stat .icon-bg {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
+  flex-shrink: 0;
 }
-.admin-stat .icon-bg.blue { background: rgba(77, 163, 255, 0.15); color: var(--color-accent); }
-.admin-stat .icon-bg.green { background: rgba(22, 163, 74, 0.15); color: var(--color-success); }
-.admin-stat .icon-bg.orange { background: rgba(245, 158, 11, 0.15); color: var(--color-warning); }
-.admin-stat .icon-bg.purple { background: rgba(147, 51, 234, 0.15); color: #9333ea; }
-.admin-stat .stat-label { font-size: 12px; color: var(--color-text-secondary); }
-.admin-stat .stat-value { font-size: 22px; font-weight: 700; color: var(--color-text-heading); }
+.admin-stat .icon-bg.blue {
+  background: rgba(22, 154, 196, 0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(22, 154, 196, 0.3);
+}
+.admin-stat .icon-bg.green {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ADE80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.admin-stat .icon-bg.orange {
+  background: rgba(255, 106, 0, 0.15);
+  color: var(--color-accent);
+  border: 1px solid rgba(255, 106, 0, 0.3);
+}
+.admin-stat .icon-bg.purple {
+  background: rgba(168, 85, 247, 0.15);
+  color: #C084FC;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+.admin-stat .stat-label {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+.admin-stat .stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-text-heading);
+  letter-spacing: -0.5px;
+}
 
 @media (max-width: 768px) {
   .admin-stats { grid-template-columns: repeat(2, 1fr); }
