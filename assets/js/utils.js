@@ -178,7 +178,7 @@ const Utils = {
       <nav class="navbar">
         <div class="navbar-inner">
           <a href="index.html" class="navbar-brand">
-            <div class="navbar-brand-logo">🏊</div>
+            <img class="navbar-brand-logo" src="assets/images/logo.jpeg" alt="Logo">
             <span>${CONFIG.BRAND_NAME}</span>
           </a>
           <button class="navbar-toggle" id="navbar-toggle" aria-label="Menu">☰</button>
