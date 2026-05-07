@@ -29,5 +29,5 @@ const CONFIG = {
   },
 
   // Nama brand
-  BRAND_NAME: 'Bontang aquatik'
+  BRAND_NAME: 'Bontang Aquatik'
 };

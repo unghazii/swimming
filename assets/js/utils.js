@@ -214,7 +214,7 @@ const Utils = {
           <div class="footer-grid">
             <div>
               <h4>${CONFIG.BRAND_NAME}</h4>
-              <p>Kelas pelatihan renang profesional dengan sistem absensi online yang mudah dan transparan.</p>
+              <p>Kelas pelatihan renang profesional dengan sistem terstruktur, fleksibel dan transparan.</p>
             </div>
             <div>
               <h4>Navigasi</h4>
